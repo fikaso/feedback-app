@@ -20,7 +20,7 @@ function RatingSelect({ select }) {
 
   useEffect(() => {
     select(selected);
-  }, [selected]);
+  }, [selected, select]);
 
   return (
     <ul className="rating">
