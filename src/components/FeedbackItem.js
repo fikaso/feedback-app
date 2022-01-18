@@ -4,8 +4,8 @@ import { FaEdit, FaTimes } from 'react-icons/fa';
 import { useContext } from 'react';
 import FeedbackContext from '../context/FeedbackContext';
 
-function FeedbackItem({ item: { id, rating, text }, handleDelete }) {
-  const { editFeedback } = useContext(FeedbackContext);
+function FeedbackItem({ item: { id, rating, text } }) {
+  const { editFeedback, handleDelete } = useContext(FeedbackContext);
 
   return (
     <Card reverse={false}>
