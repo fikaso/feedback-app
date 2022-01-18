@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { createContext } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 const FeedbackContext = createContext();
 
@@ -14,12 +13,11 @@ export const FeedbackProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    const backendFeedback = fetchFeedback();
-    backendFeedback.then((res) => console.log(res));
+    fetchFeedback();
   }, []);
 
   const fetchFeedback = async () => {
-    const response = await fetch(`/feedback?_sort=id&order=desc`);
+    const response = await fetch(`/feedback`);
     const data = await response.json();
     setFeedback(data);
     setIsLoading(false);
