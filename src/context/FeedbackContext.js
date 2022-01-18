@@ -17,7 +17,9 @@ export const FeedbackProvider = ({ children }) => {
   }, []);
 
   const fetchFeedback = async () => {
-    const response = await fetch(`/feedback`);
+    const response = await fetch(
+      `https://61e69a18ce3a2d00173592bc.mockapi.io/feedback`
+    );
     const data = await response.json();
     setFeedback(data);
     setIsLoading(false);
@@ -29,20 +31,26 @@ export const FeedbackProvider = ({ children }) => {
     if (window.confirm('Are you sure you want to delete?')) {
       setFeedback(feedback.filter((item) => item.id !== id));
 
-      const response = await fetch(`/feedback/${id}`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `https://61e69a18ce3a2d00173592bc.mockapi.io/feedback/${id}`,
+        {
+          method: 'DELETE',
+        }
+      );
     }
   };
 
   const addFeedback = async (newFeedback) => {
-    const response = await fetch(`/feedback`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newFeedback),
-    });
+    const response = await fetch(
+      `https://61e69a18ce3a2d00173592bc.mockapi.io/feedback`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newFeedback),
+      }
+    );
     const data = await response.json();
     setFeedback([data, ...feedback]);
   };
@@ -55,13 +63,16 @@ export const FeedbackProvider = ({ children }) => {
   };
 
   const updateFeedback = async (id, updItem) => {
-    const response = await fetch(`/feedback/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updItem),
-    });
+    const response = await fetch(
+      `https://61e69a18ce3a2d00173592bc.mockapi.io/feedback/${id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updItem),
+      }
+    );
 
     const data = await response.json();
 
